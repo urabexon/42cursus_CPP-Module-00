@@ -6,20 +6,18 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 19:31:14 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/22 19:56:22 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 03:53:19 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cctype>
 
-int	main(int argc, char **argv)
-{
+int	main(int argc, char **argv) {
 	std::string str;
-	if (argc == 1)
+	if (argc == 1) {
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	else
-	{
+	} else {
 		for (int i = 1; argv[i]; i++)
 			str += argv[i];
 		for (std::size_t i = 0; i < str.length(); i++)
