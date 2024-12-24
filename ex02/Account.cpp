@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:13:23 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 16:54:37 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 17:04:56 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,17 @@ void	Account::displayStatus(void) const {
 
 // タイムスタンプを表示するprivate関数
 void	Account::_displayTimestamp(void) {
-	
+	time_t	t_stmp_ptr;
+	struct	tm	*t_stmp;
+
+	std::time(&t_stmp_ptr);
+	t_stmp = localtime(&t_stmp_ptr);
+	std::cout << "[";
+	std::cout << t_stmp->tm_year + 1990;
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mon + 1;
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mday + "_";
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_hour;
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_min;
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_sec;
+	std::cout << "] ";
 }
