@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:13:23 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 17:04:56 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 17:32:47 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,29 @@ void	Account::displayAccountsInfos(void) {
 
 // 会員が入金するための関数
 void	Account::makeDeposit(int deposit) {
-	
+	_amount += deposit;
+	_totalAmount += deposit;
+    _nbDeposits++;
+    _totalNbDeposits++;
+    _displayTimestamp();
+    std::cout << "index:" << _accountIndex << ";p_amount:" << _amount - deposit << ";deposit:" << deposit << ";amount:" << _amount << ";nb_deposits:" << _nbDeposits << std::endl;
 }
 
 // 会員が出金するための関数
 bool	Account::makeWithdrawal(int withdrawal) {
-
+	if (_amount < withdrawal) {
+        _displayTimestamp();
+        std::cout << "index:" << _accountIndex << ";p_amount:" << _amount << ";withdrawal:refused" << std::endl;
+        return false;
+    } else {
+        _amount -= withdrawal;
+        _totalAmount -= withdrawal;
+        _nbWithdrawals++;
+        _totalNbWithdrawals++;
+        _displayTimestamp();
+        std::cout << "index:" << _accountIndex << ";p_amount:" << _amount + withdrawal << ";withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << _nbWithdrawals << std::endl;
+        return true;
+    }
 }
 
 // 金額をチェックする関数
@@ -81,7 +98,8 @@ int		Account::checkAmount(void) const {
 
 // 口座状況(アカウントのステータス)を表示するための関数
 void	Account::displayStatus(void) const {
-	
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";amount:" << _amount << ";deposits:" << _nbDeposits << ";withdrawals:" << _nbWithdrawals << std::endl;
 }
 
 // タイムスタンプを表示するprivate関数
@@ -94,7 +112,7 @@ void	Account::_displayTimestamp(void) {
 	std::cout << "[";
 	std::cout << t_stmp->tm_year + 1990;
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mon + 1;
-	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mday + "_";
+	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mday << "_";
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_hour;
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_min;
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_sec;
