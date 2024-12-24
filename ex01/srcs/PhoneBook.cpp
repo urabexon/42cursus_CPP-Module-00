@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:30:53 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 10:59:31 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 19:21:43 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,19 @@ PhoneBook::~PhoneBook(void) {
 // 新しい連絡先を追加する関数
 void	PhoneBook::addContact(void){	
 	if (_total_contacts == 8) {
+		// 一番古い連絡先を削除する(全て一つずつ前に詰める)
 		for (int i = 0; i < 7; i++)
 			_contacts[i] = _contacts[i + 1];
 	} else
 		_total_contacts++;
-	_contacts[_total_contacts - 1].setItems();
+	
+	if (!_contacts[_total_contacts - 1].setItems()) {
+		std::cout << "Contact was not added due to empty fields." << std::endl;
+		if (_total_contacts > 0)
+			_total_contacts--;
+		return ;
+	}
+	std::cout << "Contact successfully added." << std::endl;
 }
 
 // タイトル出力

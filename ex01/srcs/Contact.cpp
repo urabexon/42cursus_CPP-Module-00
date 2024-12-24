@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:30:46 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 10:41:01 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 19:14:31 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,41 @@ Contact::~Contact(void) {
 	return ;
 }
 
-// Contactクラスの各データメンバに値を設定するための関数
-void	Contact::setItems(void) {
+// Contactクラスの各データメンバーに値を設定するための関数
+bool	Contact::setItems(void) {
 	std::cout << "Please enter the following." << std::endl;
 	std::cout << "First Name :" << std::endl;
 	getline(std::cin, FirstName);
+	if (FirstName.empty()) {
+		std::cout << "FirstName is empty! Please enter something!" << std::endl;
+		return false;
+	}
 	std::cout << "Last Name :" << std::endl;
 	getline(std::cin, LastName);
+	if (LastName.empty()) {
+		std::cout << "LastName is empty! Please enter something!" << std::endl;
+		return false;
+	}
 	std::cout << "NickName :" << std::endl;
 	getline(std::cin, NickName);
+	if (NickName.empty()) {
+		std::cout << "NickName is empty! Please enter something!" << std::endl;
+		return false;
+	}
 	std::cout << "Phone Number :" << std::endl;
 	getline(std::cin, PhoneNumber);
+	if (PhoneNumber.empty()) {
+		std::cout << "PhoneNumber is empty! Please enter something!" << std::endl;
+		return false;
+	}
 	std::cout << "Darker Secret :" << std::endl;
 	getline(std::cin, DarkestSecret);
+	if (DarkestSecret.empty()) {
+		std::cout << "DarkerSecret is empty! Please enter something!" << std::endl;
+		return false;
+	}
 	std::cout << "Thank you for registering!" << std::endl;
-	
+	return true;
 }
 
 // Contactクラスに格納された全てのデータを出力する関数
