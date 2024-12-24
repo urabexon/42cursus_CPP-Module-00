@@ -6,7 +6,7 @@
 #    By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/24 01:51:14 by hurabe            #+#    #+#              #
-#    Updated: 2024/12/24 04:34:30 by hurabe           ###   ########.fr        #
+#    Updated: 2024/12/24 10:47:48 by hurabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM			=	rm -rf
 INCS		=	-I includes/
 SRCS_DIR	=	srcs/
 OBJS_DIR	=	objs/
-SRCS_FILES	=	Contact.cpp	Phonebook.cpp main.cpp
+SRCS_FILES	=	Contact.cpp	PhoneBook.cpp main.cpp
 SRCS		=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS		=	$(patsubst $(SRCS_DIR)%.cpp, $(OBJS_DIR)%.o, $(SRCS))
 

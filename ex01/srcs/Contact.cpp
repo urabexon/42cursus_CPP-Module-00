@@ -6,13 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:30:46 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 09:12:53 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 10:41:01 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include <iostream>
-#include <string>
+#include <sstream> // std::ostringstream
 
 // コンストラクタ(オブジェクト生成時に自動的に呼び出される。初期化)
 Contact::Contact(void) {
@@ -52,17 +52,20 @@ void	Contact::outputAll(void) {
 
 // 文字列を最大10文字に制限して、右揃えで出力する関数
 // 文字列が10文字以上の場合、9文字目以降を切り捨てて、末尾に.を追加する
-static void printLimit(const std::string& s) {
-    if (s.length() > 10) {
-        std::cout << s.substr(0, 9) << ".";
-    } else {
-        std::cout << std::string(10 - s.length(), ' ') << s;
-    }
+static void printLimit(int index) {
+	std::ostringstream oss;
+	oss << index;
+	std::string index_str = oss.str();
+	std::cout << "Index: " << index_str << std::endl;
+}
+
+static void printLimit(const std::string &str) {
+	std::cout << str << std::endl;
 }
 
 // Contactクラスのデータを簡略表示する関数
 void	Contact::outputRestricted(int index) {
-	printLimit(std::to_string(index));
+	printLimit(index);
 	std::cout << "|";
 	printLimit(FirstName);
 	std::cout << "|";

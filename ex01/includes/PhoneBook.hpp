@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 20:30:42 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 07:23:10 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 10:48:46 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 class PhoneBook
 {
 	public:
+	PhoneBook(void);
+	~PhoneBook(void);
 	void	addContact(void);
 	void	searchContact(void);
 	
