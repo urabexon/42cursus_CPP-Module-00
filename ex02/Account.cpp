@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 12:13:23 by hurabe            #+#    #+#             */
-/*   Updated: 2024/12/24 17:32:47 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/12/24 18:19:09 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	Account::_displayTimestamp(void) {
 	std::time(&t_stmp_ptr);
 	t_stmp = localtime(&t_stmp_ptr);
 	std::cout << "[";
-	std::cout << t_stmp->tm_year + 1990;
+	std::cout << t_stmp->tm_year + 1900;
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mon + 1;
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_mday << "_";
 	std::cout << std::setw(2) << std::setfill('0') << t_stmp->tm_hour;
